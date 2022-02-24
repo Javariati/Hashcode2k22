@@ -29,9 +29,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: python3 main.py
-
-      - name: Solutions
+        
+      - name: download artifacts
         uses: actions/download-artifact@v2.1.0
         with:
-          name: solutions
-          path: output/*
+          path: output/a.txt
