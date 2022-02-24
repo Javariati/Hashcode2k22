@@ -9,11 +9,12 @@ from utils.load_csv import import_csv
 
 if __name__ == "__main__":
 
-    arr = ['a_an_example.in', 'b_better_start_small.in', 'c_collaboration.in', 'd_dense_schedule.in', 'e_exceptional_skills.in', 'f']
-    #arr = ['b_better_start_small.in']
+    #arr = ['a_an_example.in', 'b_better_start_small.in', 'c_collaboration.in', 'd_dense_schedule.in', 'e_exceptional_skills.in', 'f']
+    arr = ['b_better_start_small.in']
     # glob in the folder output and get the name of last folder
     last_folder = max(glob.glob(f"output/*"), key=os.path.getctime)
-    folder = int(last_folder.split('/')[1]) + 1
+#    folder = int(last_folder.split('/')[1]) + 1
+    folder = "2"
 
     os.mkdir(f"output/{folder}")
     zippoh(f"output/{folder}")
@@ -38,26 +39,26 @@ if __name__ == "__main__":
                 failed = False
 
                 if project.should_we_do_it(day):
-                    roles = project.roles.keys()
                     roles_assigned = []
 
                     free_people = [person for person in contributors if person.free < day]
 
-                    for role in roles:
-                        skill_value = project.roles[role]
+                    for role in project.roles:
+                        role_name = role[0]
+                        required_skill_value = role[1]
 
                         for person in roles_assigned:
-                            if person.get_skill(role) >= skill_value:
-                                skill_value -= 1
+                            if person.get_skill(role_name) >= required_skill_value:
+                                required_skill_value -= 1
                                 break
 
-                        skilled_free_people = [person for person in free_people if person.get_skill(role) >= skill_value and person not in roles_assigned]
+                        skilled_free_people = [person for person in free_people if person.get_skill(role_name) >= required_skill_value and person not in roles_assigned]
 
                         if len(skilled_free_people) == 0:
                             failed = True
                             break
                         else:
-                            skilled_free_people.sort(key=lambda x: x.get_skill(role))
+                            skilled_free_people.sort(key=lambda x: x.get_skill(role_name))
                             roles_assigned.append(skilled_free_people[0])
 
                     if not failed:

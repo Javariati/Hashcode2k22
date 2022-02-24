@@ -1,6 +1,7 @@
 import pandas as pd
-from classes.person import Person
-from classes.project import Project
+
+from Hashcode2k22.classes.person import Person
+from Hashcode2k22.classes.project import Project
 
 
 def import_csv(filename):
@@ -58,11 +59,12 @@ def import_csv(filename):
 
         line_read += n_roles
 
-        dict_roles = {}
+        tuple_roles = []
         for idx, role in enumerate(roles):
-            dict_roles[role[0]] = role[1]
+            tuple_roles.append((role[0], role[1]))
 
-        project = Project(p_name, p_duration, p_score, p_best_before, dict_roles)
+
+        project = Project(p_name, p_duration, p_score, p_best_before, tuple_roles)
         projects.append(project)
 
 
@@ -70,12 +72,8 @@ def import_csv(filename):
     return contributors, projects, max_time
 
 
-
 if __name__ == "__main__":
     file = '../input/a_an_example.in'
     contributors, projects, max_time = import_csv(file)
 
-    print(contributors)
-    print("giac merda")
-    print(projects)
-    print(max_time)
+    print(projects[1].roles)
