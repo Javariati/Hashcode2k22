@@ -8,12 +8,12 @@ if __name__ == "__main__":
     arr = ['a']
 
     for element in arr:
-        path = 'input/${element}.txt '
+        path = f"input/{element}.txt"
 
         # Save a reference to the original standard output
         original_stdout = sys.stdout
 
-        with open('output/${element}.txt') as f:
+        with open(f"output/{element}.txt") as f:
             # Change the standard output to the file we created.
             sys.stdout = f
 
