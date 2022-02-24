@@ -13,7 +13,7 @@ if __name__ == "__main__":
         # Save a reference to the original standard output
         original_stdout = sys.stdout
 
-        with open(f"output/{element}.txt") as f:
+        with open(f"output/{element}.txt", "w") as f:
             # Change the standard output to the file we created.
             sys.stdout = f
 

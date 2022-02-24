@@ -18,4 +18,4 @@ def import_csv2(filename):
     header = pd.read_csv(filename, header=None, nrows=1, sep=' ')
 
     df = pd.read_csv(filename, header=None, skiprows=1, nrows=header[0], sep='\n')
-    df = df[0].str.split('\s\|\s', expand=True)
+    df = df[0].str.split(' ', expand=True)
