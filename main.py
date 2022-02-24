@@ -4,7 +4,8 @@ import sys
 
 if __name__ == "__main__":
 
-    arr = ['a', 'b', 'c', 'd', 'e', 'f']
+    #arr = ['a', 'b', 'c', 'd', 'e', 'f']
+    arr = ['a']
 
     for element in arr:
         path = 'input/${element}.txt '
@@ -16,12 +17,6 @@ if __name__ == "__main__":
             # Change the standard output to the file we created.
             sys.stdout = f
 
-            print(n_antenna)
-
-            for idx, antenna in enumerate(antenna_list):
-                if antenna.x != -1:
-                    print(antenna)
+            print("ciao")
 
             sys.stdout = original_stdout  # Reset the standard output to its original value
-
-        # print(antenna_list)
