@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # glob in the folder output and get the name of last folder
     last_folder = max(glob.glob(f"output/*"), key=os.path.getctime)
 #    folder = int(last_folder.split('/')[1]) + 1
-    folder = "2"
+    folder = "3"
 
     os.mkdir(f"output/{folder}")
     zippoh(f"output/{folder}")
