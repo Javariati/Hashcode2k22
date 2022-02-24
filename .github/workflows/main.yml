@@ -29,3 +29,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: python3 main.py
+
+      - name: Solutions
+        uses: actions/upload-artifact@v2
+        with:
+          name: solutions
+          path: output/*
