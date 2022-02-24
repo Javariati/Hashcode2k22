@@ -35,6 +35,8 @@ def import_csv(filename):
         contributor = Person(c_name, dict_skills)
         contributors.append(contributor)
 
+    max_time = 0
+
     for i in range(n_projects):
         df = pd.read_csv(filename, header=None, skiprows=line_read, nrows=1, sep=' ')
         df = df.to_numpy()
@@ -43,6 +45,11 @@ def import_csv(filename):
         p_score = df[0][2]
         p_best_before = df[0][3]
         n_roles = df[0][4]
+
+        p_time = p_best_before + p_score
+
+        if p_time > max_time:
+            max_time = p_time
 
         line_read += 1
 
@@ -58,13 +65,17 @@ def import_csv(filename):
         project = Project(p_name, p_duration, p_score, p_best_before, dict_roles)
         projects.append(project)
 
-    return contributors, projects
+
+
+    return contributors, projects, max_time
 
 
 
 if __name__ == "__main__":
     file = '../input/a_an_example.in'
-    contributors, projects = import_csv(file)
+    contributors, projects, max_time = import_csv(file)
 
     print(contributors)
+    print("giac merda")
     print(projects)
+    print(max_time)
